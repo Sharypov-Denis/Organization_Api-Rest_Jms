@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrganizationRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" orgInn="NEW888888"/>
+
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OrganizationResponse>
+<name>Новая организация</name>
+<orgInn>01010101</orgInn>
+</OrganizationResponse>

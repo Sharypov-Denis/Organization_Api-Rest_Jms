@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/Organization
+    username: postgres
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        temp:
+          use_jdbc_metadata_defaults: false
+
+activemq:
+  broker-url: failover://tcp://localhost:61616 #failover:tcp://127.0.0.1:8161
+  user: admin
+  password: admin
+  fromQueue: Org_from
+  toQueue: Org_to
+  listener-concurrency: 1
+server:
+  port: 8080

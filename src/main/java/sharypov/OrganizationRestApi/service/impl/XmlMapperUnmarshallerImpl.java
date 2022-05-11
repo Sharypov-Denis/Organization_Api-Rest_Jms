@@ -2,8 +2,8 @@ package sharypov.OrganizationRestApi.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import sharypov.OrganizationRestApi.exception.ConvertException;
-import sharypov.OrganizationRestApi.model.OrganizationRequest;
+import sharypov.OrganizationRestApi.exception.CommonException;
+import sharypov.OrganizationRestApi.model.activeMq.OrganizationRequest;
 import sharypov.OrganizationRestApi.service.XmlMapperUnmarshaller;
 
 import javax.xml.bind.JAXBContext;
@@ -29,7 +29,7 @@ public class XmlMapperUnmarshallerImpl implements XmlMapperUnmarshaller {
             StringReader reader = new StringReader(xmlMessage);
             organizationRequest = (OrganizationRequest) unmarshaller.unmarshal(reader);
         } catch (JAXBException jaxbException) {
-            throw new ConvertException(jaxbException.getMessage(), jaxbException);
+            throw new CommonException(jaxbException.getMessage(), jaxbException);
         }
         return organizationRequest;
     }

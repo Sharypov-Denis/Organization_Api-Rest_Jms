@@ -1,4 +1,4 @@
-package sharypov.OrganizationRestApi.properties;
+package sharypov.OrganizationRestApi.config.properties;
 
 import lombok.AccessLevel;
 import lombok.Data;

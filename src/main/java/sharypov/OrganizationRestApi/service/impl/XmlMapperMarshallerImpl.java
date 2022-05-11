@@ -1,10 +1,9 @@
 package sharypov.OrganizationRestApi.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.convert.ConversionException;
 import org.springframework.stereotype.Service;
-import sharypov.OrganizationRestApi.exception.ConvertException;
-import sharypov.OrganizationRestApi.model.OrganizationResponse;
+import sharypov.OrganizationRestApi.exception.CommonException;
+import sharypov.OrganizationRestApi.model.activeMq.OrganizationResponse;
 import sharypov.OrganizationRestApi.service.XmlMapperMarshaller;
 
 import javax.xml.bind.JAXBContext;
@@ -38,7 +37,7 @@ public class XmlMapperMarshallerImpl implements XmlMapperMarshaller {
             return result;
         } catch (JAXBException jaxbException) {
             log.error("");
-            throw new ConvertException(jaxbException.getMessage(), jaxbException);
+            throw new CommonException(jaxbException.getMessage(), jaxbException);
         }
     }
 }

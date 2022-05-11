@@ -14,7 +14,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.util.ErrorHandler;
-import sharypov.OrganizationRestApi.properties.ActiveMqProperties;
+import sharypov.OrganizationRestApi.config.properties.ActiveMqProperties;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;

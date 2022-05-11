@@ -1,19 +1,19 @@
 package sharypov.OrganizationRestApi.config;
 
-/*
-import org.springframework.context.annotation.Bean;
+
+/*import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-*/
+import org.springframework.security.crypto.password.PasswordEncoder;*/
 
-public class SecurityConfig/* extends WebSecurityConfigurerAdapter*/ {
 
-  /*  @Bean
+public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
+
+   /* @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -30,7 +30,8 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter*/ {
                 .antMatchers("/swagger-ui.html")
                 .antMatchers("/v2/api-docs")
                 .antMatchers("/swagger-resources/**")
-                .antMatchers("/api/organizations**")
+                .antMatchers("/api/**")
+                .antMatchers("/api/organizations")
                 .antMatchers("/webjars/**");
     }
 
@@ -41,7 +42,8 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter*/ {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("api/organizations" + "**").permitAll()
+                .antMatchers("/api/organizations" + "**").permitAll()
+                .antMatchers("/api/organization").permitAll()
                 .anyRequest().authenticated();
     }*/
 }

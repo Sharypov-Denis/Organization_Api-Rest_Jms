@@ -3,6 +3,7 @@ package sharypov.OrganizationRestApi.dao.impl.EntityManager;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import sharypov.OrganizationRestApi.dao.OrganizationDao;
+import sharypov.OrganizationRestApi.model.Account;
 import sharypov.OrganizationRestApi.model.Organization;
 
 import javax.persistence.EntityManager;
@@ -13,7 +14,7 @@ import java.util.List;
  * Реализация интерфейса через EntityManager
  */
 @Repository("EntityManager")
-@Transactional
+@Transactional(readOnly = true)
 public class OrganizationDaoEntityManagerImpl implements OrganizationDao {
 
     @PersistenceContext
@@ -32,6 +33,7 @@ public class OrganizationDaoEntityManagerImpl implements OrganizationDao {
         Organization organization = entityManager.createQuery(
                 "SELECT o from Organization o WHERE o.inn = :inn", Organization.class).
                 setParameter("inn", orgInn).getSingleResult();
+        System.out.println("test vfg: " + organization.toString());
         return organization;
     }
 
@@ -41,32 +43,35 @@ public class OrganizationDaoEntityManagerImpl implements OrganizationDao {
     }
 
     @Override
+    @Transactional
     public Organization create(Organization organization) {
         entityManager.persist(organization);
         return organization;
     }
 
     @Override
+    @Transactional
     public Organization update(Long id, Organization organization) {
         Organization original = entityManager.find(Organization.class, id);
         if (original != null) {
             original.setName(organization.getName());
             original.setInn(organization.getInn());
-            /*for (City city : original.getCities()) {
-                entityManager.remove(city);
+            for (Account account : original.getAccounts()) {
+                entityManager.remove(account);
             }
-            original.getCities().clear();
-            for (City city : organization.getCities()) {
-                city.setCountry(original);
-                original.getCities().add(city);
-                entityManager.persist(city);
-            }*/
+            original.getAccounts().clear();
+            for (Account account : organization.getAccounts()) {
+                account.setOrganization(original);
+                original.getAccounts().add(account);
+                entityManager.persist(account);
+            }
             entityManager.merge(original);
         }
         return original;
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         Organization organization = entityManager.find(Organization.class, id);
         if (organization != null) {

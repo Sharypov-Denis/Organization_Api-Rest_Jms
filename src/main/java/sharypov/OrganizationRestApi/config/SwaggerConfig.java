@@ -21,11 +21,56 @@ import static springfox.documentation.builders.RequestHandlerSelectors.withClass
 import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
 */
 
-/*@Configuration
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.*;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger.web.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.List;
+
+import static java.util.Collections.singletonList;
+import static springfox.documentation.builders.PathSelectors.any;
+import static springfox.documentation.builders.PathSelectors.regex;
+import static springfox.documentation.builders.RequestHandlerSelectors.withClassAnnotation;
+import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
+@Configuration
 @EnableSwagger2
-@Import({BeanValidatorPluginsConfiguration.class})*/
+public class SwaggerConfig extends WebMvcConfigurationSupport {
+    @Bean
+    public Docket productApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(withClassAnnotation(RestController.class))//apis(RequestHandlerSelectors.basePackage("guru.springframework.controllers"))
+                .paths(regex("/api.*"))
+                .build();
+
+    }
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+}
+
+/*
+@Configuration
+@EnableSwagger2
+@Import({BeanValidatorPluginsConfiguration.class})
 public class SwaggerConfig {
-  /*  @Bean
+  @Bean
     public UiConfiguration uiConfig() {
         return UiConfigurationBuilder.builder()
                 .deepLinking(Boolean.TRUE)
@@ -95,5 +140,5 @@ public class SwaggerConfig {
                         new AuthorizationScope("global", "accessEverything")}
         ));
     }
-*/
 }
+*/

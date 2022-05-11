@@ -3,7 +3,7 @@ package sharypov.OrganizationRestApi.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import sharypov.OrganizationRestApi.model.Organization;
-import sharypov.OrganizationRestApi.model.OrganizationResponse;
+import sharypov.OrganizationRestApi.model.activeMq.OrganizationResponse;
 import sharypov.OrganizationRestApi.service.DtoMapper;
 
 

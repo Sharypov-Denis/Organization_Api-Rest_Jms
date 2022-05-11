@@ -1,4 +1,4 @@
-package sharypov.OrganizationRestApi.model;
+package sharypov.OrganizationRestApi.model.activeMq;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

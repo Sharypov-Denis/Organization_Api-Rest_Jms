@@ -1,6 +1,6 @@
 package sharypov.OrganizationRestApi.service;
 
-import sharypov.OrganizationRestApi.model.OrganizationResponse;
+import sharypov.OrganizationRestApi.model.activeMq.OrganizationResponse;
 
 /**
  * Сервис для получения XML из экземпляра класса

@@ -5,9 +5,10 @@ import sharypov.OrganizationRestApi.model.Organization;
 import java.util.List;
 
 /**
- * Интерфейс взаимодействия с БД
+ * Интерфейс взаимодействия с БД(управление организацией)
  */
 public interface OrganizationDao {
+
     /**
      * Получение списка всех организаций
      * @return список

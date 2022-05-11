@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import sharypov.OrganizationRestApi.dao.OrganizationDao;
 import sharypov.OrganizationRestApi.model.Organization;
-import sharypov.OrganizationRestApi.model.OrganizationRequest;
-import sharypov.OrganizationRestApi.model.OrganizationResponse;
+import sharypov.OrganizationRestApi.model.activeMq.OrganizationRequest;
+import sharypov.OrganizationRestApi.model.activeMq.OrganizationResponse;
 import sharypov.OrganizationRestApi.sender.ActiveMqSender;
 
+/**
+ * Операции через очередь ActiveMq
+ */
 @Service
 @Slf4j
 public class MainRequestActiveMqImpl {
